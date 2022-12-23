@@ -53,5 +53,5 @@ class LoginSerializer(serializers.ModelSerializer):
             
             'email': user.email,
             'username': user.username,
-            'user_tyoe': user.user_type
+            'user_type': user.user_type
         }
