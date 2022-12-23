@@ -19,14 +19,23 @@ The student can register and login during their attachment period and be able to
 
 TODO/Features
 •	Should support login for four types of users:
+
 •	Defining working hours outside which entries will not be accepted
+
 •	Whether missed days due to late entries should result in increased internship days
+
 •	Whether old entries should be editable etc etc.
+
 •	Coordinators
+
 •	The teacher/lecturer in who does supervision of all the interns from a certain class and does an on site assessment of the student interns in their placements
 •	Supervisors
+
+
 •	The person who monitors student progress in his/her place of work
+
 •	Intern
+
 •	The student doing the industrial attachment
 •	Supervisor:
 •	Has to key in list of students on internship
