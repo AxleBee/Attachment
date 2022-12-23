@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-
 function SupervisorDashboard() {
   //Back to top button
   const [backToTopButton, setBackToTopButton] = useState(false);
@@ -49,7 +48,7 @@ function SupervisorDashboard() {
     navigate("/", { replace: true });
   };
 
-  if (!isAuthenticated) {
+  if (isAuthenticated) {
     navigate("/", { replace: true });
     // <Navigate replace={true} to={"/supervisor-dashboard"}/>
   } else {
