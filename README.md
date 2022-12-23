@@ -15,9 +15,11 @@ To run both together run:npm run dev
 How it works : abridged version
 
 The system is supposed to be installed  by an institution. 
+
 The student can register and login during their attachment period and be able to enter records of their daily activities through the logbook. The supervisor in charge of the student can then view the logbook and provide feedback to the student on a weekly basis. The employer from the organization in which the student is attached can also provide feedback on the students' daily work. This feedback is then only viewable by the Supervisor at the institution. The student can also download the logbook entries in case they are required physically.
 
 TODO/Features
+
 •	Should support login for four types of users:
 
 •	Defining working hours outside which entries will not be accepted
