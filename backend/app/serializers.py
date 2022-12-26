@@ -14,11 +14,12 @@ class RegisterSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         email = attrs.get('email', '')
         username = attrs.get('username', '')
-        user_type = attrs.get('usertype', '')
+        user_type = attrs.get('user_type', '')
         
         if not email:
             raise serializers.ValidationError('Users should have an Email.')
-    
+        
+        return attrs
     def create(self, validated_data):
         
         return User.objects.create_user(**validated_data)
