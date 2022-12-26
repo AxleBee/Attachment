@@ -48,7 +48,7 @@ function SupervisorDashboard() {
     navigate("/", { replace: true });
   };
 
-  if (isAuthenticated) {
+  if (!isAuthenticated) {
     navigate("/", { replace: true });
     // <Navigate replace={true} to={"/supervisor-dashboard"}/>
   } else {
