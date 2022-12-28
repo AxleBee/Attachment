@@ -68,18 +68,23 @@ class Student(models.Model):
    name = models.CharField(max_length=255)
    course = models.CharField(max_length=255)
    department = models.CharField(max_length=255)
+   photo_url = models.ImageField(upload_to="images/")
    user = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
+   
+   @classmethod
+   def get_profile_info(cls, user):
+       profile_info = cls.objects.filter(user=user).first()
+   
+# class LogBook(models.Model):
+#     pass 
 
-class LogBook(models.Model):
-    pass 
+# class Employer(models.Model):
+#     pass
 
-class Employer(models.Model):
-    pass
-
-class Supervisor(models.Model):
-    pass
+# class Supervisor(models.Model):
+#     pass
 
 
-class Feedback(models.Model):
-    pass
+# class Feedback(models.Model):
+#     pass
 
