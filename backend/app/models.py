@@ -54,7 +54,6 @@ class User(AbstractBaseUser):
     user_type = models.CharField(max_length=10)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'user_type']
     
@@ -62,3 +61,25 @@ class User(AbstractBaseUser):
     
     def __str__(self):
         return self.email
+    
+    
+class Student(models.Model):
+   admission_no = models.CharField(max_length=100, unique=True)
+   name = models.CharField(max_length=255)
+   course = models.CharField(max_length=255)
+   department = models.CharField(max_length=255)
+   user = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
+
+class LogBook(models.Model):
+    pass 
+
+class Employer(models.Model):
+    pass
+
+class Supervisor(models.Model):
+    pass
+
+
+class Feedback(models.Model):
+    pass
+
