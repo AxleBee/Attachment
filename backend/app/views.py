@@ -71,5 +71,3 @@ class StudentAPIView(generics.GenericAPIView):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-def user_logout(request):
-    pass
