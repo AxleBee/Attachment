@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 * {
-
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 .helptext {
   display: none;
@@ -57,7 +58,7 @@
 }
 
 h1 {
-  margin: 60px auto;
+  margin-top: 17px;
   padding: 0 0 20px;
   text-align: center;
   font-size: 12px;
@@ -94,7 +95,7 @@ h1 {
   outline: none;
   color: #fff;
   border-radius: 20px;
-  margin-top: 35px;
+  margin-top: 26px;
   margin-bottom: 4px;
 }
 
@@ -117,6 +118,7 @@ span {
 
 #login {
   left: 50px;
+  margin-top: 20px;
 }
 #signup {
   left: 450px;
@@ -124,7 +126,14 @@ span {
 
 
 #logo{
-  margin-top: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 17px;
+  width: 31%
+}
+
+#logoLogin{
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -134,12 +143,24 @@ span {
 #toLogin{
 
   text-decoration: none;
-  font-size: 10px;
+  font-size: 10.6px;
   text-align: center;
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 15px;
   width: 55%;
-  color: green;
+  color: green
+}
+
+#toRegister{
+  text-decoration: none;
+  font-size: 11px;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  width: 55%;
+  color: green
 }
