@@ -68,7 +68,7 @@ class StudentSerializer(serializers.ModelSerializer):
     department = serializers.CharField(max_length=255)
     photo_url = serializers.ImageField(required=False)
     user = serializers.ReadOnlyField(source='user.email')
-    
+  
     
     class Meta:
         model = Student
@@ -82,7 +82,8 @@ class StudentSerializer(serializers.ModelSerializer):
         
         return attrs
     def create(self, validated_data):
-        return Student.objects.create(**validated_data)
+        user = self.context
+        return Student.objects.create(**validated_data, user = user)
         
         
         
