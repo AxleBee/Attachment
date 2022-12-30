@@ -14,19 +14,22 @@
       {% block content %}
       <div class="hero">
         <div class="form-box">
-          <div class="button-box">
-            <div id="btn"></div>
-            {% comment %} <button type="button" class="toggle-btn" id="myLogin">Login</button> {% endcomment %}
+          <img id="logo" height="120px" src="{%static '/images/tuk-logo.jpg'%}" />
+           {% comment %}<div class="button-box">
+             <div id="btn"></div>
+            <button type="button" class="toggle-btn" id="myLogin">Login</button>
             <button type="button" class="toggle-btn" id="mySignUp">
               Register
-            </button>
-          </div>
-          <form id="login" class="input-group">
+            </button> 
+            
+          </div> {% endcomment %}
+          <form method="post" id="login" class="input-group">
             {% csrf_token %} 
             {{form}}
             <button type="submit" class="submit-btn">
                 Signup
               </button>
+              <a id="toLogin" href="{% url 'login'%}">Already have an accoount? Login</a>
         </form>
         </div>
       </div>
