@@ -1,0 +1,38 @@
+{% load static%} {% load crispy_forms_tags%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      {% block content %}
+      <div class="hero">
+        <div class="form-box">
+          <div class="button-box">
+            <div id="btn"></div>
+            {% comment %} <button type="button" class="toggle-btn" id="myLogin">Login</button> {% endcomment %}
+            <button type="button" class="toggle-btn" id="mySignUp">
+              Register
+            </button>
+          </div>
+          <form id="login" class="input-group">
+            {% csrf_token %} 
+            {{form}}
+            <button type="submit" class="submit-btn">
+                Signup
+              </button>
+        </form>
+        </div>
+      </div>
+      {% endblock %}
+    </div>
+
+    {% block scripts%} {% endblock %}
+  </body>
+</html>
