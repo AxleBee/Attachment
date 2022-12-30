@@ -22,7 +22,7 @@
   height: 550px;
   position: relative;
   margin: 6% auto;
-  background: whitesmoke;
+  background: white;
   padding: 5px;
   overflow: hidden;
   border-radius: 10px;
@@ -94,7 +94,8 @@ h1 {
   outline: none;
   color: #fff;
   border-radius: 20px;
-  margin-top: 50px;
+  margin-top: 35px;
+  margin-bottom: 4px;
 }
 
 .submit-btn:hover {
@@ -119,4 +120,26 @@ span {
 }
 #signup {
   left: 450px;
+}
+
+
+#logo{
+  margin-top: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 31%
+}
+
+#toLogin{
+
+  text-decoration: none;
+  font-size: 10px;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  width: 55%;
+  color: green;
 }
