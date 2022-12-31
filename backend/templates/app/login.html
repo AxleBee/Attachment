@@ -14,20 +14,12 @@
     {% endfor %} {% endif %}
     <div class="hero">
       <div class="form-box">
-        <h1>ATTACHMENTS MANAGEMENT SYSTEM</h1>
+        <h1>ATTACHMENT MANAGEMENT SYSTEM</h1>
         <img
           id="logoLogin"
           height="120px"
           src="{%static '/images/tuk-logo.jpg'%}"
         />
-        {% comment %}
-        <div class="button-box">
-          <div id="btn"></div>
-          <button type="button" class="toggle-btn" id="myLogin">Login</button>
-          <button type="button" class="toggle-btn" id="mySignUp">Signup</button>
-        </div>
-        {% endcomment %}
-
         <form id="login" class="input-group" method="post">
           {% csrf_token %}
           <div class="form-outline mb-4">

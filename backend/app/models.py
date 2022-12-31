@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
 # Create your models here.
 
@@ -64,19 +65,34 @@ class User(AbstractBaseUser):
     
     
 class Student(models.Model):
-   admission_no = models.CharField(max_length=100, unique=True)
-   name = models.CharField(max_length=255)
-   course = models.CharField(max_length=255)
-   department = models.CharField(max_length=255)
-   photo_url = models.ImageField(upload_to="images/")
-   user = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
-   
-   @classmethod
-   def get_profile_info(cls, user):
+    
+    admission_no = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=255)
+    course = models.CharField(max_length=255)
+    year = models.IntegerField(blank=True, null=True)
+    photo_url = models.ImageField(upload_to="images/")
+    user = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
+    
+    @classmethod
+    def get_profile_info(cls, user):
        profile_info = cls.objects.filter(user=user).first()
+       return profile_info
+       
    
-# class LogBook(models.Model):
-#     pass 
+class Attachment(models.Model):
+    attachment_name = models.CharField(max_length=100)
+    organisation_name = models.CharField(max_length=100)
+    start_date = models.DateField(default=datetime.date.today)
+    end_date = models.DateField(default=datetime.date.today)
+    student = models.OneToOneField(Student, primary_key=True, on_delete=models.CASCADE)
+    
+    @classmethod
+    def get_profile_info(cls, student):
+       attachment_info = cls.objects.filter(student=student).first()
+       return attachment_info
+   
+class LogBook(models.Model):
+    pass 
 
 # class Employer(models.Model):
 #     pass
