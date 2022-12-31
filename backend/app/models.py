@@ -74,8 +74,8 @@ class Student(models.Model):
     user = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
     
     @classmethod
-    def get_profile_info(cls, user):
-       profile_info = cls.objects.filter(user=user).first()
+    def get_profile_info(cls, email):
+       profile_info = cls.objects.filter(email=email).first()
        return profile_info
        
    
@@ -87,8 +87,8 @@ class Attachment(models.Model):
     student = models.OneToOneField(Student, primary_key=True, on_delete=models.CASCADE)
     
     @classmethod
-    def get_profile_info(cls, student):
-       attachment_info = cls.objects.filter(student=student).first()
+    def get_profile_info(cls, email):
+       attachment_info = cls.objects.filter(email=email).first()
        return attachment_info
    
 class LogBook(models.Model):
