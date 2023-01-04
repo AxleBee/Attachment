@@ -55,6 +55,9 @@ class User(AbstractBaseUser):
     user_type = models.CharField(max_length=10)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    date_joined = models.DateTimeField(auto_now_add=True)
+    last_login = models.DateTimeField(auto_now_add=True)
+    updated_profile = models.BooleanField(default=False)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'user_type']
     
@@ -81,23 +84,36 @@ class Student(models.Model):
    
 class Attachment(models.Model):
     attachment_name = models.CharField(max_length=100)
-    organisation_name = models.CharField(max_length=100)
+    department_name = models.CharField(max_length=100)
     start_date = models.DateField(default=datetime.date.today)
     end_date = models.DateField(default=datetime.date.today)
     student = models.OneToOneField(Student, primary_key=True, on_delete=models.CASCADE)
     
     @classmethod
     def get_profile_info(cls, email):
-       attachment_info = cls.objects.filter(email=email).first()
+       attachment_info = cls.objects.get(email=email).first()
        return attachment_info
    
 class LogBook(models.Model):
-    pass 
-
-# class Employer(models.Model):
-#     pass
+    date = models.DateField(auto_now=False)
+    activity = models.CharField(max_length=1000)
+    verified = models.BooleanField(default=False)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, )
+    
+    
+    
+   
+    def verify(self):
+       self.verified =  True
+       return True
+   
+    
+    
 
 # class Supervisor(models.Model):
+#     pass
+
+# class Employer(models.Model):
 #     pass
 
 
