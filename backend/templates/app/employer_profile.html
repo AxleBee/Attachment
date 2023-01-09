@@ -31,15 +31,18 @@
           </a>
         </div>
         <div id="login" class="input-group">
-          {%if current_user.student.photo_url %}
-          <div class="card" id="card" style="width: 100%; position: relative">
+          {%if current_user.employer.photo_url %}
+          <div class="card" id="card" style="width: 100%; position: relative; box-shadow: 0 0 3px 1px lightgreen;">
             <img
-              src="..{{current_user.student.photo_url.url}}"
+              src="..{{current_user.employer.photo_url.url}}"
               alt="John"
               height="81"
               width="81"
               style="
                 border-radius: 50%;
+                border: 2.8px solid lightgreen;
+                -webkit-border-radius: 500px;
+                -moz-border-radius: 500px;
                 position: absolute;
                 top: -40px;
                 right: -10px;
@@ -47,11 +50,11 @@
               "
             />
             <div style="margin-top: 61px">
-              <h2 style="margin-top: auto">{{current_user.student.name}}</h2>
-              <p class="title">{{current_user.student.admission_no}}</p>
+              <h2 style="margin-top: auto">{{current_user.employer.name}}</h2>
+              <p class="title">{{current_user.employer.postion}}, {{current_user.employer.organisation}} </p>
               <p>
-                {{current_user.student.course}}, Year
-                {{current_user.student.year}}
+                <b>Contact:</b>
+                {{current_user.employer.phone}}
               </p>
             </div>
           </div>
@@ -99,27 +102,27 @@
           <div class="form-group" style="padding: 5px">
             <input
               type="text"
-              name="course"
+              name="phone"
               class="form-control"
-              placeholder="course"
-              required
-            />
-          </div>
-          <div class="form-group" style="padding: 5px">
-            <input
-              type="number"
-              name="year"
-              class="form-control"
-              placeholder="year"
+              placeholder="phone"
               required
             />
           </div>
           <div class="form-group" style="padding: 5px">
             <input
               type="text"
-              name="admission_no"
+              name="organisation"
               class="form-control"
-              placeholder="admission no"
+              placeholder="organisation"
+              required
+            />
+          </div>
+          <div class="form-group" style="padding: 5px">
+            <input
+              type="text"
+              name="position"
+              class="form-control"
+              placeholder="position"
               required
             />
           </div>

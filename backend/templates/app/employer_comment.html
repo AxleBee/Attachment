@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <title>Employer Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styles1.css'%}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="profile-details">
+        {%if current_user.employer.photo_url %}
+        <img src="..{{current_user.employer.photo_url.url}}" alt="" />
+        {% else %}
+        <img
+          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+          alt=""
+        />
+        {% endif %}
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="{% url 'employer_dashboard'%}">
+            <i class="fas fa-bars"></i>
+            <span class="link_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'employer_profile'%}">
+            <i class="fas fa-user"></i>
+            <span class="link_name">Profile</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{% url 'logout'%}">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span class="link_name">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="fas fa-bars sidebarBtn" style="color: green"></i>
+          <span class="dashboard"></span>
+        </div>
+      </nav>
+
+      <div class="comment-box">
+        <h6><b>FEEDBACK</b>:</h6>
+        <form action="#" method="post">
+            {% csrf_token %}
+          <textarea
+            name="feedback"
+            placeholder="Type your feedback here..."
+          ></textarea>
+          <button type="submit" class="btn btn-sm">Submit Feedback</button>
+        </form>
+      </div>
+    </section>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Popper.JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+      integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+      integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".sidebarBtn");
+
+        sidebarBtn.onclick = function () {
+          sidebar.classList.toggle("active");
+        };
+      });
+    </script>
+  </body>
+</html>
