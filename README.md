@@ -126,28 +126,8 @@ TODO/Features
 
 •	Internship start date should not be a one-time permanent change to cater for mistakes. Instead the coordinator should be notified when the intern sets his/her start date and maybe the number of times the start date has been changed to monitor people who are trying to misuse the system
 
-•	Add list of provinces and districts
-
-
-Show entry preview when mouse hovers over date for some seconds the way stackoverflow shows tag description on hover
-
-Disable button until there's an actual change??
-
-Ability to export the whole logbook as a printable pdf with supervisor remarks and student logs all in one
-
-Ability to view diffs when entries are updated??
-
-Prompt user to save before leaving and show an icon that shows that the entry is unsaved
-
-Capture Ctrl+S keypress
-
-Throw error when no date is specified
-
-Clicking on the tabs should change the title of the tab
-
-Stop running sql queries to fetch logbook entries and profiles for the logged in user. Use instead ActiveQuery methods available through the User model since they are connected through a foreign key
-
-
-DIRECTORY STRUCTURE
-
+[Flow Charts (1).pdf](https://github.com/AxleBee/Attachment/files/10538743/Flow.Charts.1.pdf)
+[supervisor.pdf](https://github.com/AxleBee/Attachment/files/10538745/supervisor.pdf)
+[employer object 1.pdf](https://github.com/AxleBee/Attachment/files/10538746/employer.object.1.pdf)
+[student sequence diagram (1).pdf](https://github.com/AxleBee/Attachment/files/10538747/student.sequence.diagram.1.pdf)
 
