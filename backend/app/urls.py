@@ -10,6 +10,7 @@ urlpatterns = [
     ## student paths
     path('add_attachment/', add_attachment, name="add_attachment"),
     path('view_attachments/', view_attachments, name='view_attachments'),
+    path('delete_attachment/', delete_attachment, name="delete_attachment"),
     path('student_profile/', student_profile, name="student_profile"),
     path('add_logbook/', add_logbook, name="add_logbook"),
     path('search_logbook/', search_logbook, name="search_logbook"),

@@ -156,9 +156,10 @@
                       {{logbook.date | date:"l" }}, {{logbook.date}}
                     </td>
                     <td
+                    style="cursor: pointer;"
                       data-toggle="tooltip"
                       data-html="true"
-                      title="{% for comment in logbook.comments_set.all %}{{comment}}{% endfor%}"
+                      title="<em>Supervisor Comment : </em>{% for comment in logbook.comments_set.all %}{{comment}}{% endfor%}"
                     >
                       {{logbook.activity}}
                     </td>

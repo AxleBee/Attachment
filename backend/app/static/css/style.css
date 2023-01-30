@@ -5,6 +5,7 @@
   padding: 0;
   font-family: 'Roboto', sans-serif;
 }
+
 .helptext {
   display: none;
 }
@@ -163,4 +164,25 @@ span {
   margin-top: 20px;
   width: 55%;
   color: green
+}
+
+.alert-warning{
+  position: absolute;
+  top: 20px;
+  padding: 5px;
+  left: 500px;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+
+.alert-success{
+  position: absolute;
+  top: 20px;
+  padding: 5px;
+  left: 500px;
+  color: white;
+  background-color: #44f40981;
+  border-color: #c8f9d6;
 }

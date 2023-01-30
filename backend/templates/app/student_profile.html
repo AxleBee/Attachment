@@ -21,10 +21,11 @@
   <body class="bg-light">
     <div class="my_warapper">
       <div class="form-box">
+        <a href="{% url 'add_attachment' %}" class="m-1">Back</a>
         <div class="button-box">
           <div id="btn"></div>
           <a class="badge badge-pill btn-lg toggle-btn" id="myLogin">
-            Profile
+            Profile 
           </a>
           <a type="button" class="badge badge-pill toggle-btn" id="mySignUp">
             Edit
@@ -51,7 +52,7 @@
               <p class="title">{{current_user.student.admission_no}}</p>
               <p>
                 {{current_user.student.course}}, Year
-                {{current_user.student.year}}
+                {{current_user.student.year}} 
               </p>
             </div>
           </div>

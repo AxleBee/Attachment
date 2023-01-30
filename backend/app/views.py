@@ -40,7 +40,7 @@ def login_view(request):
                 return redirect('employer_dashboard')
             if user.user_type == "student":
                 return redirect('add_attachment')
-            
+
             messages.success(request, 'Logged In successfully.')
 
         else:
@@ -85,8 +85,15 @@ def add_attachment(request):
 
 @login_required(login_url='/attachment/login/')
 def view_attachments(request):
-    attachments = Attachment.objects.all()[::-1]
+    attachments = Attachment.objects.filter(student=request.user.student)[::-1]
     return render(request, "app/view-attachment.html", locals())
+
+
+@login_required(login_url='/attachment/login/')
+def delete_attachment(request):
+    attachement = Attachment.objects.get(student=request.user.student)
+    attachement.delete()
+    return redirect('view_attachments')
 
 
 @login_required(login_url='/attachment/login/')
@@ -115,6 +122,7 @@ def student_profile(request):
             )
             profile.user.updated_profile = True
             current_user.save()
+            return redirect('add_attachment')
         else:
             student = Student.objects.get(
                 admission_no=current_user.student.admission_no)
@@ -124,6 +132,7 @@ def student_profile(request):
             student.year = level
             student.photo_url = pic
             student.save()
+            return redirect('add_attachment')
     return render(request, 'app/student_profile.html', locals())
 
 
@@ -158,14 +167,11 @@ def search_logbook(request):
     return render(request, "app/view-logbooks.html", locals())
 
 
-def view_comments(request):
-    pass
-
 # Supervisor views
 
-
+@login_required(login_url='/attachment/login/')
 def supervisor_dashboard(request):
-    supervisor = request.user.supervisor
+    current_user = request.user
     if not request.user.updated_profile:
         messages.success(
             request, f'update your profile detail')
@@ -197,6 +203,7 @@ def supervisor_profile(request):
             )
             profile.user.updated_profile = True
             current_user.save()
+            return redirect('supervisor_dashboard')
         else:
             supervisor = Supervisor.objects.get(
                 pk=current_user.pk)
@@ -206,9 +213,11 @@ def supervisor_profile(request):
             supervisor.phone = phone
             supervisor.photo_url = pic
             supervisor.save()
+            return redirect('supervisor_dashboard')
     return render(request, 'app/supervisor_profile.html', locals())
 
 
+@login_required(login_url='/attachment/login/')
 def supervisor_feedback(request, email):
     student = User.objects.get(email=email).student
     log_books = None
@@ -221,6 +230,7 @@ def supervisor_feedback(request, email):
     return render(request, "app/logbook_feedback.html", locals())
 
 
+@login_required(login_url='/attachment/login/')
 def logbook_comment(request, log_id):
     supervisor = request.user.supervisor
     logbook = get_object_or_404(LogBook, pk=log_id)
@@ -239,6 +249,7 @@ def logbook_comment(request, log_id):
         return HttpResponseRedirect(next_url)
 
 
+@login_required(login_url='/attachment/login/')
 def employer_dashboard(request):
     current_user = request.user
     if not request.user.updated_profile:
@@ -275,19 +286,22 @@ def employer_profile(request):
             )
             profile.user.updated_profile = True
             current_user.save()
+            return redirect('employer_dashboard')
         else:
             employer = Employer.objects.get(
                 pk=current_user.pk)
 
             employer.name = name
-            employer.organisation=organisation
+            employer.organisation = organisation
             employer.postion = position
             employer.phone = phone
             employer.photo_url = pic
             employer.save()
+            return redirect('employer_dashboard')
     return render(request, 'app/employer_profile.html', locals())
 
 
+@login_required(login_url='/attachment/login/')
 def employer_comment(request, email):
     current_user = request.user
     student = User.objects.get(email=email).student
@@ -295,7 +309,7 @@ def employer_comment(request, email):
         comment = EmployerComment.objects.create(
 
             comment=request.POST.get('feedback'),
-            student = student
+            student=student
         )
         return redirect('employer_dashboard')
     return render(request, "app/employer_comment.html", locals())

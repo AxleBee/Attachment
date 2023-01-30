@@ -21,6 +21,7 @@
   <body class="bg-light">
     <div class="my_warapper">
       <div class="form-box">
+        <a href="{% url 'employer_dashboard' %}" class="m-1">Back</a>
         <div class="button-box">
           <div id="btn"></div>
           <a class="badge badge-pill btn-lg toggle-btn" id="myLogin">
@@ -32,7 +33,7 @@
         </div>
         <div id="login" class="input-group">
           {%if current_user.employer.photo_url %}
-          <div class="card" id="card" style="width: 100%; position: relative; box-shadow: 0 0 3px 1px lightgreen;">
+          <div class="card" id="card" style="width: 100%; position: relative; box-shadow: ">
             <img
               src="..{{current_user.employer.photo_url.url}}"
               alt="John"
@@ -40,7 +41,6 @@
               width="81"
               style="
                 border-radius: 50%;
-                border: 2.8px solid lightgreen;
                 -webkit-border-radius: 500px;
                 -moz-border-radius: 500px;
                 position: absolute;

@@ -25,36 +25,38 @@
     <link rel="stylesheet" href="{% static 'css/supervisor.css'%}" />
   </head>
   <body>
-    <div class="continer-fluid">
+    <div class="container">
       <div class="wrapper">
-        <nav id="sidebar">
-          <div class="sidebar-header">
-            <h5>Dashboard</h5>
-          </div>
+        <div clas="col-md-4">
+          <nav id="sidebar">
+            <div class="sidebar-header">
+              <h5>Dashboard</h5>
+            </div>
 
-          <ul class="list-unstyled components">
-            <img
-              id="profile-pic"
-              src="..{{supervisor.photo_url.url}}"
-              alt=""
-              style="width: 45px; height: 45px"
-              class="rounded-circle m-3"
-            />
-            <li>
-              <a href="{%url 'supervisor_profile'%}">
-                <i class="fa-solid fa-user"></i>
-                &nbsp;&nbsp; Profile
-              </a>
-            </li>
-            <li>
-              <a href="{%url 'logout'%}">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                &nbsp;&nbsp; Logout
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div id="content" class="m-3">
+            <ul class="list-unstyled components">
+              <img
+                id="profile-pic"
+                src="..{{current_user.supervisor.photo_url.url}}"
+                alt=""
+                style="width: 75px; height: 75px"
+                class="rounded-circle m-3"
+              />
+              <li>
+                <a href="{%url 'supervisor_profile'%}">
+                  <i class="fa-solid fa-user"></i>
+                  &nbsp;&nbsp; Profile
+                </a>
+              </li>
+              <li>
+                <a href="{%url 'logout'%}">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  &nbsp;&nbsp; Logout
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div id="content" class="m-3 col-md-11">
           <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
               <button
@@ -86,7 +88,7 @@
             </div>
           </nav>
           <h2>Submissions</h2>
-          <table class="table align-middle mb-0 bg-white w-auto">
+          <table class="table align-middle mb-0 bg-white" style="width:100%;">
             <thead class="bg-light">
               <tr>
                 <th>Student Admission</th>
@@ -108,14 +110,13 @@
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="text-center"> Employer's Feedback:</h5>
+                      <h5 class="text-center">Employer's Feedback:</h5>
                       <button
                         type="button"
                         class="badge badge-warning"
                         data-dismiss="modal"
                         aria-label="Close"
                       >
-                     
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
@@ -159,7 +160,7 @@
                             class="dropdown-item"
                             data-toggle="modal"
                             data-target="#exampleModal{{student.id}}"
-                            style="cursor: pointer;"
+                            style="cursor: pointer"
                           >
                             <em>Comment</em>
                           </button>
