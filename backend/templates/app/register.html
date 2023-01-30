@@ -1,0 +1,33 @@
+{% load static%} {% load crispy_forms_tags%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      {% block content %}
+      <div class="hero">
+        <div class="form-box">
+          <img id="logo" height="120px" src="{%static '/images/tuk-logo.jpg'%}" />
+          <form method="post" id="login" class="input-group">
+            {% csrf_token %} 
+            {{form}}
+            <button type="submit" class="submit-btn">
+                Signup
+              </button>
+              <a id="toLogin" href="{% url 'login'%}">Already have an accoount? Login</a>
+        </form>
+        </div>
+      </div>
+      {% endblock %}
+    </div>
+
+    {% block scripts%} {% endblock %}
+  </body>
+</html>

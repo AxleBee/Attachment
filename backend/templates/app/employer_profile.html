@@ -1,0 +1,189 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Add-attachement</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    {% comment %}
+    <link rel="stylesheet" href="{% static 'css/Card.css'%}" />
+    {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/profile.css'%}" />
+  </head>
+  <body class="bg-light">
+    <div class="my_warapper">
+      <div class="form-box">
+        <div class="button-box">
+          <div id="btn"></div>
+          <a class="badge badge-pill btn-lg toggle-btn" id="myLogin">
+            Profile
+          </a>
+          <a type="button" class="badge badge-pill toggle-btn" id="mySignUp">
+            Edit
+          </a>
+        </div>
+        <div id="login" class="input-group">
+          {%if current_user.employer.photo_url %}
+          <div class="card" id="card" style="width: 100%; position: relative; box-shadow: 0 0 3px 1px lightgreen;">
+            <img
+              src="..{{current_user.employer.photo_url.url}}"
+              alt="John"
+              height="81"
+              width="81"
+              style="
+                border-radius: 50%;
+                border: 2.8px solid lightgreen;
+                -webkit-border-radius: 500px;
+                -moz-border-radius: 500px;
+                position: absolute;
+                top: -40px;
+                right: -10px;
+                left: 98px;
+              "
+            />
+            <div style="margin-top: 61px">
+              <h2 style="margin-top: auto">{{current_user.employer.name}}</h2>
+              <p class="title">{{current_user.employer.postion}}, {{current_user.employer.organisation}} </p>
+              <p>
+                <b>Contact:</b>
+                {{current_user.employer.phone}}
+              </p>
+            </div>
+          </div>
+          {% else %}
+          <div>
+            <h4
+              class="text-center"
+              style="position: absolute; top: 10px; right: 10px; left: 8px"
+            >
+              No profile
+            </h4>
+            <img
+              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+              alt="John Doe"
+              height="100"
+              width="100"
+              style="
+                border-radius: 50%;
+                position: absolute;
+                top: 55px;
+                right: -10px;
+                left: 98px;
+              "
+            />
+          </div>
+          {% endif %}
+        </div>
+        <form
+          id="signup"
+          class="input-group"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <h4 class="text-center">UPDATE PROFILE</h4>
+          {% csrf_token %}
+          <div class="form-group" style="padding: 5px">
+            <input
+              type="text"
+              name="name"
+              class="form-control"
+              placeholder="name"
+              required
+            />
+          </div>
+          <div class="form-group" style="padding: 5px">
+            <input
+              type="text"
+              name="phone"
+              class="form-control"
+              placeholder="phone"
+              required
+            />
+          </div>
+          <div class="form-group" style="padding: 5px">
+            <input
+              type="text"
+              name="organisation"
+              class="form-control"
+              placeholder="organisation"
+              required
+            />
+          </div>
+          <div class="form-group" style="padding: 5px">
+            <input
+              type="text"
+              name="position"
+              class="form-control"
+              placeholder="position"
+              required
+            />
+          </div>
+          <div class="form-group" style="padding: 5px">
+            <input
+              type="file"
+              accept="image/*"
+              name="pic"
+              class="form-control"
+              style="padding: 20px"
+              required
+            />
+          </div>
+          <button class="btn btn-success btn-sm submit-btn" type="submit">
+            Update
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Popper.JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+      integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+      integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        var x = document.getElementById("login");
+        var y = document.getElementById("signup");
+        var z = document.getElementById("btn");
+
+        const signup = () => {
+          x.style.left = "-400px";
+          y.style.left = "50px";
+          z.style.left = "110px";
+        };
+        const login = () => {
+          x.style.left = "50px";
+          y.style.left = "450px";
+          z.style.left = "0";
+        };
+
+        $("#myLogin").on("click", () => {
+          login();
+        });
+        $("#mySignUp").on("click", () => {
+          signup();
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,161 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <title>Employer Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="profile-details">
+        {%if current_user.employer.photo_url %}
+        <img src="..{{current_user.employer.photo_url.url}}" alt="" />
+        {% else %}
+        <img
+          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+          alt=""
+        />
+        {% endif %}
+      </div>
+
+      <ul class="nav-links">
+        <li>
+          <a href="{% url 'employer_dashboard'%}">
+            <i class="fas fa-bars"></i>
+            <span class="link_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'employer_profile'%}">
+            <i class="fas fa-user"></i>
+            <span class="link_name">Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'logout'%}">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span class="link_name">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="fas fa-bars sidebarBtn " style="color: green; cursor:pointer"></i>
+          <span class="dashboard">Dashboard</span>
+        </div>
+      </nav>
+
+      <!--interns-content-->
+      <div class="interns-boxes">
+        <table class="table align-middle mb-0 bg-white w-auto ml-3 mr-2" style="margin-top: 79px;">
+          <thead class="bg-light">
+            <tr>
+              <th>Student Registration</th>
+              <th>Student Name</th>
+              <th>Department</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%for student in students %} {%if student.student.photo_url %}
+            <tr key="index">
+              <td>
+                <div class="d-flex align-items-center">
+                  <img
+                    src="..{{student.student.photo_url.url}}"
+                    alt=""
+                    style="width: 45px; height: 45px"
+                    class="rounded-circle"
+                  />&nbsp;&nbsp;
+                  <div class="ms-3">
+                    <p class="fw-bold mb-1"></p>
+                    <p class="text-muted mb-0">{{student.student.admission_no}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <p class="text-muted mb-0">{{student.student.name}}</p>
+              </td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <p class="fw-normal mb-1">
+                    {{student.student.attachment.department_name}}
+                  </p>
+                </div>
+              </td>
+              <td>
+                <p class="fw-normal mb-1">
+                  {% if student.student.employercomment.comment%}
+                  <span class="badge badge-pill badge-success"
+                    ><i class="fa-solid fa-check"></i
+                  ></span>
+                  {% else %}
+                  <span class="badge badge-pill badge-warning p-.5"
+                    >Awaiting Approval ...</span
+                  >
+                  {% endif %}
+                </p>
+              </td>
+              <td>
+                <a
+                  href="{% url 'employer_comment' student.student.user.email%}"
+                  class="badge badge-success rounded-pill d-inline"
+                >
+                  view
+                </a>
+              </td>
+            </tr>
+            {% endif %} {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Popper.JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+      integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+      integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".sidebarBtn");
+
+        sidebarBtn.onclick = function () {
+          sidebar.classList.toggle("active");
+        };
+      });
+    </script>
+  </body>
+</html>

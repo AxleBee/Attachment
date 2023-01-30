@@ -1,0 +1,186 @@
+
+.helptext {
+  display: none;
+}
+.my_warapper {
+  height: auto;
+  width: 100%;
+  position: absolute;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  url(../images/profile.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.form-box {
+  width: 400px;
+  height: 75vh;
+  position: relative;
+  margin: 6% auto;
+  background: white;
+  padding: 5px;
+  overflow: hidden;
+  box-shadow: 7px 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  overflow-y: scroll;
+  
+}
+
+.form-box::-webkit-scrollbar {
+    width: 10px;
+    
+  }
+
+  .form-box::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  .form-box::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+.button-box {
+  width: 200px;
+  margin: 20px auto;
+  position: relative;
+  box-shadow: 0 0 20px 9px whitesmoke;
+  border-radius: 30px;
+}
+
+.toggle-btn {
+  padding: 10px 30px;
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  position: relative;
+}
+
+#btn {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 110px;
+  height: 100%;
+  background: linear-gradient(to right, green, peru);
+  border-radius: 30px;
+  transition: 0.5s;
+}
+
+h1 {
+  margin-top: 17px;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 12px;
+  color: green;
+}
+
+.input-group {
+  top: 100px;
+  position: absolute;
+  width: 280px;
+  transition: 0.5s;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px 0;
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 1px solid #999;
+  outline: none;
+  background: transparent;
+}
+
+.submit-btn {
+  width: 75%;
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  background: green;
+  border: 0;
+  outline: none;
+  color: #fff;
+  border-radius: 20px;
+  margin-top: 26px;
+  margin-bottom: 4px;
+}
+
+.submit-btn:hover {
+  cursor: pointer;
+  background: green;
+  color: black;
+}
+
+.chech-box {
+  margin: 30px 10px 30px 0;
+}
+
+span {
+  color: #777;
+  font-size: 12px;
+  bottom: 64px;
+  position: absolute;
+}
+
+#login {
+  left: 50px;
+  margin-top: 20px;
+}
+#signup {
+  left: 450px;
+}
+
+#logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 17px;
+  width: 31%;
+}
+
+#logoLogin {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 31%;
+}
+
+
+#card {
+    box-shadow: 7px 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  #cardbtn {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  #card a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+  
+  #cardbtn:hover, #card a:hover {
+    opacity: 0.7;
+  }

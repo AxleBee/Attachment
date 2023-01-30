@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-
 function SupervisorDashboard() {
   //Back to top button
   const [backToTopButton, setBackToTopButton] = useState(false);

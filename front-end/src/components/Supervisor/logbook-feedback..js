@@ -41,7 +41,7 @@ function LogBookFeeback() {
 
   const navigate = useNavigate();
   const authenticated = localStorage.getItem("authenticated");
-  if (!authenticated) {
+  if (authenticated) {
     navigate("/");
   } else {
     return (
